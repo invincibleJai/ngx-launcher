@@ -7,7 +7,11 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
+<<<<<<< HEAD
 import { DomSanitizer } from '@angular/platform-browser';
+=======
+import {DomSanitizer} from '@angular/platform-browser';
+>>>>>>> initial commit with service runtime
 
 import { Mission } from '../model/mission.model';
 import { Runtime } from '../model/runtime.model';
@@ -41,6 +45,7 @@ export class MissionRuntimeStepComponent extends WizardStep implements OnInit, O
   }
 
   ngOnInit() {
+    debugger;
     this.wizardComponent.addStep(this);
     let missionSubscription = this.missionRuntimeService.getMissions().subscribe((result) => {
       this._missions = result;
@@ -108,6 +113,7 @@ export class MissionRuntimeStepComponent extends WizardStep implements OnInit, O
    * Navigate to next step
    */
   navToNextStep(): void {
+    debugger;
     this.wizardComponent.getStep(this.id).completed = this.stepCompleted;
     this.wizardComponent.navToNextStep();
   }
@@ -136,8 +142,10 @@ export class MissionRuntimeStepComponent extends WizardStep implements OnInit, O
     if (selection === undefined) {
       return;
     }
-    this.missionId = selection.runtimeId;
+    this.missionId = selection.missionId;
+    debugger;
     this.runtimeId = selection.runtimeId;
+    console.log("selection", selection);
 
     this.missions.forEach((val) => {
       if (this.missionId === val.id) {
@@ -160,7 +168,6 @@ export class MissionRuntimeStepComponent extends WizardStep implements OnInit, O
   }
 
   private updateRuntimeSelection(val: Runtime): void {
-    this.selectedRuntime = val;
     this.wizardComponent.summary.runtime = val;
     this.wizardComponent.summary.runtime.version = (val.version !== undefined) ? val.version : val.versions[0];
     this.initCompleted();
