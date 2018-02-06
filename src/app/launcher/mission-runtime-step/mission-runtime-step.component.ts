@@ -136,7 +136,7 @@ export class MissionRuntimeStepComponent extends WizardStep implements OnInit, O
     if (selection === undefined) {
       return;
     }
-    this.missionId = selection.missionId;
+    this.missionId = selection.runtimeId;
     this.runtimeId = selection.runtimeId;
 
     this.missions.forEach((val) => {
