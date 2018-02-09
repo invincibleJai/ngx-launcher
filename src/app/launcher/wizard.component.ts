@@ -3,7 +3,6 @@ import {
   Component,
   OnInit,
   ViewChild,
-  ChangeDetectionStrategy,
   ViewEncapsulation
 } from '@angular/core';
 import { Router } from '@angular/router';
@@ -16,7 +15,6 @@ import { WizardStep } from './wizard-step';
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: 'f8launcher-wizard',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './wizard.component.html',
   styleUrls: ['./wizard.component.less']
 })
@@ -62,7 +60,6 @@ export class WizardComponent implements AfterViewInit, OnInit {
    * @returns {Selection} The current selection
    */
   get selection(): Selection {
-    debugger;
     let selection = {
       githubOrg: this._summary.githubOrg,
       githubRepo: this._summary.githubRepo,
