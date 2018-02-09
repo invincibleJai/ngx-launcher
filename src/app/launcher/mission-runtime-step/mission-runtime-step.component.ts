@@ -46,6 +46,17 @@ export class MissionRuntimeStepComponent extends WizardStep implements OnInit, O
       this._missions = result;
     }));
     this.subscriptions.push(this.missionRuntimeService.getRuntimes().subscribe((result) => {
+      result.forEach(item => {
+        //TODO: needs to be removed , curently picking unique version out of missions as runtime version is not clear
+        item.versions = [];
+        item.missions.forEach(mission => {
+          mission.versions.forEach(version => {
+            if(item.versions.indexOf(version.name)== -1){
+              item.versions.push(version.name);
+            }
+          });
+        });
+      });
       this._runtimes = result;
     }));
   }
