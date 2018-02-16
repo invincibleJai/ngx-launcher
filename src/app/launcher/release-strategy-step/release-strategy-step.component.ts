@@ -75,13 +75,14 @@ export class ReleaseStrategyStepComponent extends WizardStep implements OnInit, 
       filterConfig: this.filterConfig,
       sortConfig: this.sortConfig
     } as ToolbarConfig;
-
+    
     this.wizardComponent.addStep(this);
     this.subscriptions.push(this.pipelineService.getPipelines().subscribe((result) => {
       // needs to filter out associated pipelines from list of pipelines
       let selPipelines: any[] = [];
+      let selectionWiz: Selection = this.wizardComponent.currentSelection;
       selPipelines = result.filter(item => {
-        return item.platform == "maven";
+        return item.platform == selectionWiz.platform;
       })
 
       this._pipelines = this.allPipelines = selPipelines;
