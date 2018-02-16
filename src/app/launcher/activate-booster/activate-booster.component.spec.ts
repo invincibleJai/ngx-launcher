@@ -1,8 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
 import { By } from '@angular/platform-browser';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { ActivateBoosterComponent } from './activate-booster.component';
+import { WizardComponent } from '../wizard.component';
 
 describe('ActivateBoosterComponent', () => {
   let component: ActivateBoosterComponent;
@@ -11,10 +13,14 @@ describe('ActivateBoosterComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        CommonModule
+        CommonModule,
+        RouterTestingModule
       ],
       declarations: [
         ActivateBoosterComponent
+      ],
+      providers: [
+        WizardComponent
       ]
     }).compileComponents();
   }));

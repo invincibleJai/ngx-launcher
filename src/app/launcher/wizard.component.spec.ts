@@ -1,9 +1,95 @@
+import {
+  Component,
+  Host,
+  Input,
+  OnDestroy,
+  OnInit,
+  ViewEncapsulation } from '@angular/core';
+
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { WizardComponent } from './wizard.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
+import { WizardComponent } from './wizard.component';
+import { StepIndicatorComponent } from './step-indicator/step-indicator.component';
+import { ActivateBoosterComponent } from './activate-booster/activate-booster.component';
+import { ProjectProgressComponent } from './project-progress/project-progress.component';
+import { Selection } from './model/selection.model';
+import { Summary } from './model/summary.model';
+import { WizardStep } from './wizard-step';
+import { from } from 'rxjs/observable/from';
+
+@Component({
+  selector: 'f8launcher-step-indicator',
+  template: ''
+})
+export class Fakef8launcherStepIndicator {
+  @Input() inProgress: boolean 
+}
+
+@Component({
+  selector: 'f8launcher-missionruntime-step',
+  template: ''
+})
+export class Fakef8launcherMissionruntimeStep {
+  @Input() id: string;
+  @Input() completed: boolean = false;
+  @Input() hidden: boolean = false;
+  @Input() styleClass: string;
+  @Input() title: string;
+}
+
+@Component({
+  selector: 'f8launcher-targetenvironment-step',
+  template: ''
+})
+export class Fakef8launcherTargetEnvironmentStep {
+  @Input() id: string;
+  @Input() completed: boolean = false;
+  @Input() hidden: boolean = false;
+  @Input() styleClass: string;
+  @Input() title: string;
+}
+
+@Component({
+  selector: 'f8launcher-releasestrategy-step',
+  template: ''
+})
+export class Fakef8launcherReleaseStrategyStep {
+  @Input() id: string;
+  @Input() completed: boolean = false;
+  @Input() hidden: boolean = false;
+  @Input() styleClass: string;
+  @Input() title: string;
+}
+
+
+@Component({
+  selector: 'f8launcher-gitprovider-step',
+  template: ''
+})
+export class Fakef8launcherGitproviderStep {
+  @Input() id: string;
+  @Input() completed: boolean = false;
+  @Input() hidden: boolean = false;
+  @Input() styleClass: string;
+  @Input() title: string;
+}
+
+@Component({
+  selector: 'f8launcher-projectsummary-step',
+  template: ''
+})
+export class Fakef8launcherProjectSummaryrStep {
+  @Input() id: string;
+  @Input() completed: boolean = false;
+  @Input() hidden: boolean = false;
+  @Input() styleClass: string;
+  @Input() title: string;
+}
 
 describe('WizardComponent', () => {
   let component: WizardComponent;
@@ -12,10 +98,20 @@ describe('WizardComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        CommonModule
+        CommonModule,
+        FormsModule,
+        RouterTestingModule
       ],
       declarations: [
-        WizardComponent
+        WizardComponent,
+        Fakef8launcherStepIndicator,
+        Fakef8launcherMissionruntimeStep,
+        Fakef8launcherTargetEnvironmentStep,
+        Fakef8launcherReleaseStrategyStep,
+        Fakef8launcherGitproviderStep,
+        Fakef8launcherProjectSummaryrStep,
+        ActivateBoosterComponent,
+        ProjectProgressComponent
       ]
     }).compileComponents();
   }));
