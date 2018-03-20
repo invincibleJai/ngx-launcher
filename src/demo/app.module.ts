@@ -5,6 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+// import { DependencyEditorModule } from 'fabric8-analytics-dep-editor';
+
 // App components
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';

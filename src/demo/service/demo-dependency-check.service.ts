@@ -20,4 +20,11 @@ export class DemoDependencyCheckService implements DependencyCheckService {
       spacePath: '/myspace'
     });
   }
+
+  getGithubInformation(missionId: string, runtimeId: string, version: string): Observable<any> {
+    return Observable.of({
+      gitRepo: 'giturl'
+    });
+  }
+
 }

@@ -12,4 +12,5 @@ export abstract class DependencyCheckService {
    * @returns {Observable<DependencyCheck>} Project dependencies
    */
   abstract getDependencyCheck(): Observable<DependencyCheck>;
+  abstract getGithubInformation(missionId: string, runtimeId: string, version: string): Observable<any>;
 }
